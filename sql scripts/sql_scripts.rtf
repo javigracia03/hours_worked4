@@ -1,0 +1,68 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2707
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;\f1\fnil\fcharset0 Menlo-Italic;\f2\fnil\fcharset0 .AppleSystemUIFontMonospaced-Regular;
+}
+{\colortbl;\red255\green255\blue255;\red97\green98\blue102;\red234\green234\blue234;\red0\green0\blue0;
+\red83\green85\blue2;\red11\green84\blue83;\red0\green0\blue194;\red255\green255\blue255;\red35\green38\blue42;
+\red244\green244\blue244;\red166\green63\blue5;\red8\green64\blue128;\red69\green105\blue13;}
+{\*\expandedcolortbl;;\cssrgb\c45490\c45882\c47451;\cssrgb\c93333\c93333\c93333;\cssrgb\c0\c0\c0;
+\cssrgb\c40000\c40000\c0;\cssrgb\c0\c40000\c40000;\cssrgb\c0\c0\c80392;\cssrgb\c100000\c100000\c100000;\cssrgb\c18431\c20000\c21569;
+\cssrgb\c96471\c96471\c96471;\cssrgb\c71765\c32549\c392;\cssrgb\c392\c32941\c57647;\cssrgb\c33725\c47843\c5098;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww30040\viewh18900\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs30 \cf2 \cb3 \expnd0\expndtw0\kerning0
+CREATE TABLE usernames\cf5 (\cf2 \
+   USERNAME   \cf2 \cb3 VARCHAR \cf5 (\cf6 15\cf5 )\cf2  \cf2 \cb3 NOT NULL\cf5 ,\cf2 \
+   PASSWORD VARCHAR \cf5 (\cf6 20\cf5 )\cf2      NOT NULL\
+\cf5 );\cf2 \
+\
+\
+\pard\pardeftab720\partightenfactor0
+\cf7 \cb8 INSERT\cf0  \cf7 INTO\cf0  
+\f1\i usernames
+\f0\i0  (
+\f1\i username
+\f0\i0 ,
+\f1\i  password
+\f0\i0 )\cb1  \cf7 \cb8 VALUES\cf0  (\cf7 \'91
+\f1\i \cf0 javiergracia03
+\f0\i0 \cf7 \'92\cf0 ,
+\f1\i  
+\f0\i0 \cf7 \'91
+\f1\i \cf0 0000
+\f0\i0 \cf7 \'92\cf0 );\cf2 \cb3 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb3 CREATE TABLE usernames\cf5 (\cf2 \
+   USERNAME   VARCHAR \cf5 (\cf6 15\cf5 )\cf2  NOT NULL\cf5 ,\cf2 \
+   PASSWORD VARCHAR \cf5 (\cf6 20\cf5 )\cf2      NOT NULL\
+\cf5 );\
+\
+CREATE TABLE ficha(
+\f1\i \cf0 \cb8 \
+	
+\f0\i0 \cf5 \cb3 \
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs26 \cf9 \cb10 	\cf11 ID INTEGER\cf9  \cf12 NOT\cf9  \cf12 NULL\cf9  \cf12 DEFAULT\cf9  nextval(\cf13 \cb10 '\cf9 \cb10 families_id_seq\cf13 \cb10 '\cf9 \cb10 ),
+\f0\fs30 \cf5 \cb3 \
+	nombre \cf2 VARCHAR \cf5 (\cf6 15\cf5 )\cf2  NOT NULL,\cf5 \
+	HORA_INICIO\cf2  VARCHAR \cf5 (\cf6 15\cf5 )\cf2  NOT NULL\cf5 ,\
+	HORA_FIN\cf2  VARCHAR \cf5 (\cf6 15\cf5 ) NOT NULL\cf2 ,\cf5 \
+	TIEMPO_DEDICADO VARCHAR (15), \
+	FECHA\cf2 	VARCHAR \cf5 (\cf6 15\cf5 ) NOT NULL,\
+	PROYECTO \cf2 VARCHAR \cf5 (\cf6 15\cf5 ),\
+	ACTIVIDAD \cf2 VARCHAR \cf5 (\cf6 15\cf5 ),\
+	ACCI\'d3N \cf2 VARCHAR \cf5 (\cf6 20\cf5 ),\
+	MODELO \cf2 VARCHAR \cf5 (\cf6 15\cf5 ),\
+	EMPRESA \cf2 VARCHAR \cf5 (\cf6 15\cf5 ),\
+	INTERLOCUTOR \cf2 VARCHAR \cf5 (\cf6 15\cf5 ),\
+	TEMAS_TRATADOS \cf2 VARCHAR \cf5 (\cf6 30\cf5 ),\
+	MES \cf2 INTEGER\cf5  NOT NULL\
+);
+\f2\fs26 \cf11 \cb10 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf11 \cb10 \
+}
