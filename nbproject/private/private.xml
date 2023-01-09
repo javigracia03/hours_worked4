@@ -3,11 +3,24 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/javiergracia/Documents/GITHUB/horas/hours_worked/src/recuento_horas/LOGIN.java</file>
             <file>file:/Users/javiergracia/Documents/GITHUB/horas/hours_worked/src/recuento_horas/Introducir_datos.java</file>
+            <file>file:/Users/javiergracia/Documents/GITHUB/horas/hours_worked/src/recuento_horas/FILTRO_PERSONAACTIVIDADPROYECTO.java</file>
+            <file>file:/Users/javiergracia/Documents/GITHUB/horas/hours_worked/src/recuento_horas/FILTRO_PERSONAMES.java</file>
             <file>file:/Users/javiergracia/Documents/GITHUB/horas/hours_worked/src/recuento_horas/PRUEBA.java</file>
-            <file>file:/Users/javiergracia/Documents/GITHUB/horas/hours_worked/src/recuento_horas/FILTRO_ACCION_NOMBRE_MES.java</file>
+            <file>file:/Users/javiergracia/Documents/GITHUB/horas/hours_worked/src/recuento_horas/CONSULTAS.java</file>
+            <file>file:/Users/javiergracia/Documents/GITHUB/horas/hours_worked/src/recuento_horas/FILTRO_PROYECTO.java</file>
+            <file>file:/Users/javiergracia/Documents/GITHUB/horas/hours_worked/src/recuento_horas/FILTRO_ACTIVIDAD.java</file>
+            <file>file:/Users/javiergracia/Documents/GITHUB/horas/hours_worked/src/recuento_horas/MENU.java</file>
+            <file>file:/Users/javiergracia/Documents/GITHUB/horas/hours_worked/src/recuento_horas/FILTRO_ACTIVIDAD_MES.java</file>
+            <file>file:/Users/javiergracia/Documents/GITHUB/horas/hours_worked/src/recuento_horas/FILTRO_ACTIVIDADPROYECTO.java</file>
+            <file>file:/Users/javiergracia/Documents/GITHUB/horas/hours_worked/src/recuento_horas/BORRAR_DATOS.java</file>
             <file>file:/Users/javiergracia/Documents/GITHUB/horas/hours_worked/src/recuento_horas/Utilidades.java</file>
+            <file>file:/Users/javiergracia/Documents/GITHUB/horas/hours_worked/src/recuento_horas/LOGIN.java</file>
+            <file>file:/Users/javiergracia/Documents/GITHUB/horas/hours_worked/src/recuento_horas/FILTRO_PERSONA.java</file>
+            <file>file:/Users/javiergracia/Documents/GITHUB/horas/hours_worked/src/recuento_horas/PANEL_CONSULTAS.java</file>
+            <file>file:/Users/javiergracia/Documents/GITHUB/horas/hours_worked/src/recuento_horas/FILTRO_ACCION_NOMBRE_MES.java</file>
+            <file>file:/Users/javiergracia/Documents/GITHUB/horas/hours_worked/src/recuento_horas/FILTRO_PERSONAPROYECTO.java</file>
+            <file>file:/Users/javiergracia/Documents/GITHUB/horas/hours_worked/src/recuento_horas/PANTALLA.java</file>
             <file>file:/Users/javiergracia/Documents/GITHUB/horas/hours_worked/src/recuento_horas/Conectar_db.java</file>
             <file>file:/Users/javiergracia/Documents/GITHUB/horas/hours_worked/src/recuento_horas/FILTRO.java</file>
             <file>file:/Users/javiergracia/Documents/GITHUB/horas/hours_worked/src/recuento_horas/Trabajadores.java</file>

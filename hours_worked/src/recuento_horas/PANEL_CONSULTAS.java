@@ -45,7 +45,7 @@ public class PANEL_CONSULTAS extends PANTALLA {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("TODOS");
+        jButton1.setText("AÑO");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -184,9 +184,9 @@ public class PANEL_CONSULTAS extends PANTALLA {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
             CONSULTAS c1 = new CONSULTAS();
-            c1.crearTabla2();
-            c1.setVisible(true);
-            super.setVisible(false);
+            
+                c1.setVisible(true);
+                super.setVisible(false);
         } catch (SQLException ex) {
             Logger.getLogger(PANEL_CONSULTAS.class.getName()).log(Level.SEVERE, null, ex);
         }

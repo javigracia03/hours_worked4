@@ -25,8 +25,9 @@ public class CONSULTAS extends PANTALLA {
     /**
      * Creates new form CONSULTAS
      */
-    public CONSULTAS() {
+    public CONSULTAS() throws SQLException {
         initComponents();
+       
          
     }
 
@@ -44,6 +45,9 @@ public class CONSULTAS extends PANTALLA {
         jButton1 = new javax.swing.JButton();
         print_button = new javax.swing.JButton();
         export_button = new javax.swing.JButton();
+        ano_box = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -94,6 +98,17 @@ public class CONSULTAS extends PANTALLA {
             }
         });
 
+        ano_box.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030", "2031", "2032", "2033" }));
+
+        jLabel1.setText("AÑO");
+
+        jButton2.setText("FILTRAR");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -106,15 +121,32 @@ public class CONSULTAS extends PANTALLA {
                 .addGap(82, 82, 82)
                 .addComponent(export_button)
                 .addGap(86, 86, 86))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1)
-                .addContainerGap())
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(ano_box, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton2)
+                        .addGap(44, 44, 44))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(65, 65, 65)
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addGap(1, 1, 1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ano_box, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2))
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 472, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(42, 42, 42)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -155,6 +187,20 @@ public class CONSULTAS extends PANTALLA {
         }
     }//GEN-LAST:event_print_buttonActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // Get the table model
+    //jTable1.setModel(new DefaultTableModel());
+        try {
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+            model.setRowCount(0);
+            // TODO add your handling code here:
+            this.crearTabla2();
+        } catch (SQLException ex) {
+            Logger.getLogger(CONSULTAS.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -187,7 +233,12 @@ public class CONSULTAS extends PANTALLA {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CONSULTAS().setVisible(true);
+                try {
+                    new CONSULTAS().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(CONSULTAS.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
             }
         });
     }
@@ -259,7 +310,7 @@ public class CONSULTAS extends PANTALLA {
             System.out.println(array[1][0]);
         }  */    
     public void crearTabla2() throws SQLException{
-        
+        System.out.println("iniciando tabla");
         Connection con = Conectar_db.conectDB();
         Statement st = null;
         ResultSet rs = null;
@@ -269,8 +320,10 @@ public class CONSULTAS extends PANTALLA {
              st = con.createStatement();
             
             
-            int currentYear = Year.now().getValue();
-            String sql_request = "SELECT * from ficha WHERE ANO = " + currentYear + " ORDER BY FECHA ";
+            //int yearSelected = ano_box.getSelectedItem();
+            String selectedItem = (String) ano_box.getSelectedItem();
+            System.out.println(selectedItem);
+            String sql_request = "SELECT * from ficha WHERE ANO = " + selectedItem + " ORDER BY FECHA ";
             //sql_request = sql_request + currentYear;
             rs = st.executeQuery(sql_request);
             while (rs.next()){
@@ -328,8 +381,11 @@ public class CONSULTAS extends PANTALLA {
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> ano_box;
     private javax.swing.JButton export_button;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JButton print_button;

@@ -50,7 +50,7 @@ public class Conectar_db {
             String password = "Hner527n7MY";
 
             Connection con = DriverManager.getConnection(url, username, password);
-
+            System.out.println("Connection established");
             return con;
            
         } catch (SQLException ex) {
