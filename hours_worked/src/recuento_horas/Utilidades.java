@@ -149,6 +149,28 @@ public class Utilidades {
        return res;
     
     }
+    public static long sumatiempo2(String a, long b) throws ParseException{
+        
+        if (b==0){
+            
+            return horaToMilis(a);
+        }
+        
+       long a_mili = horaToMilis(a);
+       //long b_mili = horaToMilis(b);
+       long suma = a_mili + b;
+       
+       
+       
+       System.out.println("long" + a_mili);
+      System.out.println("longb" + b);
+       System.out.println("longsuma" + suma);
+       
+       //String res = milisToHoras_suma(suma);
+       
+       return suma;
+    
+    }
     
     public void recogerDatos(ArrayList<JComboBox<String>> a){
         

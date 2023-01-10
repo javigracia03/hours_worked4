@@ -11,10 +11,12 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.*;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.text.ParseException;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 import java.time.LocalTime;
+import java.time.Year;
 import java.time.format.DateTimeFormatter;
 
 /**
@@ -148,8 +150,8 @@ public class Introducir_datos extends PANTALLA{
 
         jLabel9.setText("HORA FINAL");
 
-        hora_inicial.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "06:00", "06:30", "07:00", "07:30", "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00", "17:30", "18:00", "18:30", "19:00", "19:30", "20:00", "20:30", "21:00", "21:30", "22:00", "22:30", "23:00", "23:30", "24:00" }));
-        hora_inicial.setSelectedIndex(5);
+        hora_inicial.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "06:00", "06:15", "06:30", "06:45", "07:00", "07:15", "07:30", "07:45", "08:00", "08:15", "08:30", "08:45", "09:00", "09:15", "09:30", "09:45", "10:00", "10:15", "10:30", "10:45", "11:00", "11:15", "11:30", "11:45", "12:00", "12:15", "12:30", "12:45", "13:00", "13:15", "13:30", "13:45", "14:00", "14:15", "14:30", "14:45", "15:00", "15:15", "15:30", "15:45", "16:00", "16:15", "16:30", "16:45", "17:00", "17:15", "17:30", "17:45", "18:00", "18:15", "18:30", "18:45", "19:00", "19:15", "19:30", "19:45", "20:00", "20:15", "20:30", "20:45", "21:00", "21:15", "21:30", "21:45", "22:00", "22:15", "22:30", "22:45", "23:00", "23:15", "23:30", "23:45", "24:00" }));
+        hora_inicial.setSelectedIndex(8);
         hora_inicial.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 hora_inicialItemStateChanged(evt);
@@ -161,8 +163,8 @@ public class Introducir_datos extends PANTALLA{
             }
         });
 
-        hora_final.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "06:00", "06:30", "07:00", "07:30", "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00", "17:30", "18:00", "18:30", "19:00", "19:30", "20:00", "20:30", "21:00", "21:30", "22:00", "22:30", "23:00", "23:30", "24:00" }));
-        hora_final.setSelectedIndex(6);
+        hora_final.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "06:00", "06:15", "06:30", "06:45", "07:00", "07:15", "07:30", "07:45", "08:00", "08:15", "08:30", "08:45", "09:00", "09:15", "09:30", "09:45", "10:00", "10:15", "10:30", "10:45", "11:00", "11:15", "11:30", "11:45", "12:00", "12:15", "12:30", "12:45", "13:00", "13:15", "13:30", "13:45", "14:00", "14:15", "14:30", "14:45", "15:00", "15:15", "15:30", "15:45", "16:00", "16:15", "16:30", "16:45", "17:00", "17:15", "17:30", "17:45", "18:00", "18:15", "18:30", "18:45", "19:00", "19:15", "19:30", "19:45", "20:00", "20:15", "20:30", "20:45", "21:00", "21:15", "21:30", "21:45", "22:00", "22:15", "22:30", "22:45", "23:00", "23:15", "23:30", "23:45", "24:00" }));
+        hora_final.setSelectedIndex(38);
         hora_final.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 hora_finalActionPerformed(evt);
@@ -319,6 +321,7 @@ public class Introducir_datos extends PANTALLA{
         try {
             try {
                 enviar_datos(new_trabajador);
+                
             } catch (SQLException ex) {
                 Logger.getLogger(Introducir_datos.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -427,10 +430,10 @@ public class Introducir_datos extends PANTALLA{
           System.out.println(time);
           
           //Add 3 hours
-          LocalTime newTime = time.plusHours(3);
+          /*LocalTime newTime = time.plusHours(3);
           System.out.println(newTime);
           hora_final.setSelectedItem(newTime.toString());
-         /* if (selectedItem.equals("Item 1")) {
+          if (selectedItem.equals("Item 1")) {
             hora_final.setSelectedItem("Item A");
           } else if (selectedItem.equals("Item 2")) {
             hora_final.setSelectedItem("Item B");
@@ -595,6 +598,63 @@ public void enviar_datos(Trabajadores trab1) throws ParseException, SQLException
             
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
+        }finally {
+            prep_statement.close();
+            con.close();
+            System.out.println("Connection closed");
+            
+        }
+            
+            check_max_hours(trab1);
+}
+
+public void check_max_hours(Trabajadores trab2) throws SQLException, ParseException{
+    PreparedStatement prep_statement = null;
+            ResultSet rs = null;    
+            Connection con = Conectar_db.conectDB();
+    try {
+            int currentYear = Year.now().getValue();
+            
+            String sum = null;
+            long sum_milis=0L;
+            if (trab2==null){
+                return;
+            }
+            clearData();
+            
+            String name_selec = trab2.getNombre();
+            String sql = "SELECT nombre, TIEMPO_DEDICADO FROM ficha WHERE ANO = " + currentYear + " AND nombre = '" + name_selec + "' ;";
+            System.out.println(sql);
+            prep_statement = con.prepareStatement(sql);
+            rs = prep_statement.executeQuery();
+            
+            
+            while (rs.next()){
+            
+                
+                String name = rs.getString("NOMBRE");
+                String time_dedicated = rs.getString("TIEMPO_DEDICADO");
+                
+                
+                    sum_milis = Utilidades.sumatiempo2(time_dedicated, sum_milis);
+                    
+
+                
+                
+            }
+            long horas_max_milis = 6228000000L;
+            if (sum_milis > horas_max_milis){
+                    
+                    JOptionPane.showMessageDialog(null, "ESTA PERSONA HA SUPERADO LAS 1730 HORAS", "SUPERACIÓN DE HORAS", JOptionPane.WARNING_MESSAGE);
+
+                    
+                    }
+            
+            System.out.println("SUMA: " + sum);
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Introducir_datos.class.getName()).log(Level.SEVERE, null, ex);
         }finally {
             prep_statement.close();
             con.close();
