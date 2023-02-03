@@ -90,6 +90,7 @@ public class FILTRO extends PANTALLA {
                 case "proyecto": trab.setProyecto(desplegables[i].getSelectedItem().toString());  break;
                 case "accion": trab.setAccion(desplegables[i].getSelectedItem().toString());  break;
                 case "modelo": trab.setModelo(desplegables[i].getSelectedItem().toString());  break;
+                
                 case "mes": trab.setMes(Integer.parseInt(desplegables[i].getSelectedItem().toString()));  break;
                 case "id": trab.setID(Integer.parseInt(desplegables[i].getSelectedItem().toString())); break;
                
@@ -120,7 +121,7 @@ public class FILTRO extends PANTALLA {
         
         try {
             
-            String inicio = "SELECT ID, FECHA, NOMBRE, ACCIÓN, ACTIVIDAD, HORA_INICIO, HORA_FIN, TIEMPO_DEDICADO, MES from ficha WHERE ";
+            String inicio = "SELECT ID, FECHA, NOMBRE, ACCIÓN, EMPRESA, ACTIVIDAD, HORA_INICIO, HORA_FIN, TIEMPO_DEDICADO, MES from ficha WHERE ";
             
             inicio = inicio + "ANO = " + currentYear + " AND ";
             
@@ -137,6 +138,7 @@ public class FILTRO extends PANTALLA {
                 case "proyecto": inicio = inicio + "PROYECTO = ? AND "; break;
                 case "modelo": inicio = inicio + "MODELO = ? AND "; break;
                 case "accion": inicio = inicio + "ACCIÓN = ? AND "; break;
+                //case "empresa": inicio = inicio + "EMPRESA = ? AND "; break;
                 case "mes": inicio = inicio + "MES = ? AND "; break;
                 case "id": inicio = inicio + "ID = ? AND "; break;
                 
@@ -157,6 +159,7 @@ public class FILTRO extends PANTALLA {
                     case "proyecto": inicio = inicio + "PROYECTO = ? ORDER BY FECHA;"; break;
                     case "modelo": inicio = inicio + "MODELO = ? ORDER BY FECHA;"; break;
                     case "accion": inicio = inicio + "ACCIÓN = ? ORDER BY FECHA ;"; break;
+                    //case "empresa": inicio = inicio + "EMPRESA = ? ORDER BY FECHA "; break;
                     case "mes": inicio = inicio + "MES = ? ORDER BY FECHA;"; break;
                     case "id": inicio = inicio + "ID = ? ORDER BY FECHA;"; break;
 
@@ -176,6 +179,7 @@ public class FILTRO extends PANTALLA {
                 case "proyecto":  prep_statement.setString(j, trab.getProyecto()); break;
                 case "modelo":  prep_statement.setString(j, trab.getModelo()); break;
                 case "accion":  prep_statement.setString(j, trab.getAccion()); break;
+                //case "empresa":  prep_statement.setString(j, trab.getAccion()); break;
                 case "mes":  prep_statement.setInt(j, trab.getMes()); System.out.println(trab.getMes());break;
                 case "id":  prep_statement.setInt(j, trab.getID()); System.out.println(trab.getMes());break;
                
@@ -206,6 +210,7 @@ public class FILTRO extends PANTALLA {
                 String actividad = rs.getString("ACTIVIDAD");
              
                 String accion = rs.getString("ACCIÓN");
+                String empresa = rs.getString("EMPRESA");
 
                 String hora_in = rs.getString("HORA_INICIO");
                 String hora_fin = rs.getString("HORA_FIN");
@@ -223,7 +228,7 @@ public class FILTRO extends PANTALLA {
 
                 //String total_hours = String.valueOf(rs.getDouble("suma"));
                 
-               Object tbData[]={ID, date, name, accion, actividad, hora_in, hora_fin, time_dedicated};
+               Object tbData[]={ID, date, name, accion, empresa, actividad, hora_in, hora_fin, time_dedicated};
                
                DefaultTableModel tblModel = (DefaultTableModel) tabla_filtrada.getModel();
                 
@@ -280,11 +285,11 @@ public class FILTRO extends PANTALLA {
 
             },
             new String [] {
-                "ID", "FECHA", "NOMBRE", "ACCIÓN", "ACTIVIDAD", "HORA INICIAL", "HORA FINAL", "HORAS TRABAJADAS"
+                "ID", "FECHA", "NOMBRE", "ACCIÓN", "EMPRESA", "ACTIVIDAD", "HORA INICIAL", "HORA FINAL", "HORAS TRABAJADAS"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
