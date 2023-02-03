@@ -547,9 +547,10 @@ public class Introducir_datos extends PANTALLA{
        
        System.out.println(nombre_introducido);
        //System.out.println(horas_trabajadas);
-       System.out.println(short_date);
+       //System.out.println(short_date);
        //System.out.println(trab1.getFechaLarga());
       // System.out.println(hora_final);
+      System.out.println("Proyecto: " + proyecto_);
        
        
        return trab1;
