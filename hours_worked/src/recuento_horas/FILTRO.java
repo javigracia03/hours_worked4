@@ -121,7 +121,7 @@ public class FILTRO extends PANTALLA {
         
         try {
             
-            String inicio = "SELECT ID, FECHA, NOMBRE, ACCIÓN, EMPRESA, ACTIVIDAD, HORA_INICIO, HORA_FIN, TIEMPO_DEDICADO, MES from ficha WHERE ";
+            String inicio = "SELECT ID, FECHA, NOMBRE, ACCIÓN, EMPRESA, ACTIVIDAD, HORA_INICIO, HORA_FIN, TIEMPO_DEDICADO, MES, TEMAS_TRATADOS from ficha WHERE ";
             
             inicio = inicio + "ANO = " + currentYear + " AND ";
             
@@ -209,8 +209,10 @@ public class FILTRO extends PANTALLA {
                 String name = rs.getString("NOMBRE");
                 String actividad = rs.getString("ACTIVIDAD");
              
-                String accion = rs.getString("ACCIÓN");
                 String empresa = rs.getString("EMPRESA");
+                String accion = rs.getString("ACCIÓN");
+                
+                String temas = rs.getString("TEMAS_TRATADOS");
 
                 String hora_in = rs.getString("HORA_INICIO");
                 String hora_fin = rs.getString("HORA_FIN");
@@ -228,7 +230,7 @@ public class FILTRO extends PANTALLA {
 
                 //String total_hours = String.valueOf(rs.getDouble("suma"));
                 
-               Object tbData[]={ID, date, name, accion, empresa, actividad, hora_in, hora_fin, time_dedicated};
+               Object tbData[]={ID, date, name, accion, empresa, actividad, hora_in, hora_fin, time_dedicated, temas};
                
                DefaultTableModel tblModel = (DefaultTableModel) tabla_filtrada.getModel();
                 
@@ -285,11 +287,11 @@ public class FILTRO extends PANTALLA {
 
             },
             new String [] {
-                "ID", "FECHA", "NOMBRE", "ACCIÓN", "EMPRESA", "ACTIVIDAD", "HORA INICIAL", "HORA FINAL", "HORAS TRABAJADAS"
+                "ID", "FECHA", "NOMBRE", "ACCIÓN", "EMPRESA", "ACTIVIDAD", "HORA INICIAL", "HORA FINAL", "HORAS TRABAJADAS", "TEMAS"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
